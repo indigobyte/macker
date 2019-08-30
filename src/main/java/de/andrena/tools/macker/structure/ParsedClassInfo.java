@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -220,6 +221,13 @@ public class ParsedClassInfo extends AbstractClassInfo {
 							ReferenceType.METHOD_THROWS, behavior.getName(), methodAccess));
 				}
 			}
+			addAnnotationReferences(behavior.getAvailableAnnotations(), ReferenceType.METHOD_SIGNATURE, behavior.getName(), methodAccess);
+			if (behavior.getAvailableParameterAnnotations() != null) {
+				Object[][] methodParameterAnnotations = behavior.getAvailableParameterAnnotations();
+				for (Object[] methodParameterAnnotation: methodParameterAnnotations) {
+					addAnnotationReferences(methodParameterAnnotation, ReferenceType.METHOD_PARAM, behavior.getName(), methodAccess);
+				}
+			}
 		}
 	}
 
@@ -229,20 +237,37 @@ public class ParsedClassInfo extends AbstractClassInfo {
 		parseConstantPoolReferences(classFile);
 		parseMethodReferences(classFile);
 		parseFieldReferences(classFile);
+		parseClassAnnotations(classFile);
+		//TODO: implement search for references in nested classes
 		this.references = InnigCollections.unmodifiableMultiMap(getReferences());
 	}
 
 	private void parseFieldReferences(CtClass classFile) throws ClassParseException {
-		CtField[] fields = classFile.getFields();
+		CtField[] fields = classFile.getDeclaredFields();
 		for (CtField field : fields) {
 			List<String> types = ClassNameTranslator.signatureToClassNames(field.getSignature());
 			if (types.size() != 1) {
 				throw new ClassParseException("expected one type for field " + getFullName() + '.' + field.getName()
 						+ "; got: " + types + " (signature is \"" + field.getSignature() + "\")", classFile);
 			}
+
 			addReference(new Reference(this, getSafeClassInfo(types.get(0), field.getSignature()),
 					ReferenceType.FIELD_SIGNATURE, field.getName(), translateAccess(field.getModifiers())));
+			addAnnotationReferences(field.getAvailableAnnotations(), ReferenceType.FIELD_SIGNATURE, field.getName(), translateAccess(field.getModifiers()));
 		}
+	}
+
+	private void addAnnotationReferences(Object[] annotationObjects, ReferenceType referenceType, String memberName, AccessModifier accessModifier) throws ClassParseException {
+		for (Object annotationObject : annotationObjects) {
+			Annotation annotation = (Annotation) annotationObject;
+			String annotationClassName = annotation.annotationType().getName();
+			addReference(new Reference(this, getSafeClassInfo(annotationClassName), referenceType, memberName, accessModifier));
+		}
+	}
+
+	private void parseClassAnnotations(CtClass classFile) throws ClassParseException {
+		Object[] classAnnotations = classFile.getAvailableAnnotations();
+		addAnnotationReferences(classAnnotations, ReferenceType.CLASS_ANNOTATION, "class_annotation", AccessModifier.PUBLIC);
 	}
 
 	private ClassInfo getSafeClassInfo(final String className) throws ClassParseException {

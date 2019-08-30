@@ -10,7 +10,7 @@
 
 	<groupId>de.andrena.tools.macker</groupId>
 	<artifactId>macker</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.6-CUSTOM</version>
 	<packaging>jar</packaging>
 
 	<name>Macker</name>
@@ -71,6 +71,7 @@
 				<version>2.9</version>
   			    <configuration>
        				<additionalparam>-Xdoclint:none</additionalparam>
+					<source>8</source>
       			</configuration>
       			<executions>
 					<execution>
