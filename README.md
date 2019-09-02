@@ -14,6 +14,7 @@ mvn clean package deploy:deploy-file \
     -Dfile=target/macker-1.0.6-CUSTOM.jar \
     -Dsources=target/macker-1.0.6-CUSTOM-sources.jar \
     -Djavadoc=target/macker-1.0.6-CUSTOM-javadoc.jar \
+    -DpomFile=pom.xml \
     -Durl=file://path-to-mvn-repo-folder
 ``````
 
