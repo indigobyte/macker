@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>de.andrena.tools.macker</groupId>
+  <artifactId>macker</artifactId>
+  <versioning>
+    <release>1.0.6-CUSTOM</release>
+    <versions>
+      <version>1.0.6-CUSTOM</version>
+    </versions>
+    <lastUpdated>20190902100635</lastUpdated>
+  </versioning>
+</metadata>
