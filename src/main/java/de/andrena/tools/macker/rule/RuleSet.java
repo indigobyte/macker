@@ -32,7 +32,7 @@ import de.andrena.tools.macker.structure.ClassInfo;
 import de.andrena.tools.macker.structure.ClassManager;
 
 /**
- * Processes <ruleset> tags in rule XML files.
+ * Processes &lt;ruleset&gt; tags in rule XML files.
  */
 public class RuleSet extends Rule {
 	public static RuleSet getMackerDefaults() {

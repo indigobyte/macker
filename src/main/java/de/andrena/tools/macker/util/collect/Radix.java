@@ -47,17 +47,16 @@ import java.util.List;
  * Radix representations allow certain sorting and lookup algorithms which are
  * more efficient in large cases than those which are possible with comparison
  * alone.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
- * <tr>
- * <td bgcolor="#EEEEEE">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
+* <tr>
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> All the radix utilities in innig-util are completely
  * experimental. They mostly work, but perform poorly. They may stay; they may
  * improve; they may go away.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> Experiment.</td>
  * </tr>
  * </table>
@@ -79,7 +78,7 @@ public interface Radix extends Comparator {
 	 * @param o
 	 *            An object from which this radix can extract digits.
 	 * @param position
-	 *            A digit position within <tt>o</tt>.
+	 *            A digit position within <code>o</code>.
 	 * @return a digit <i>d</i>, with -1 &lt;= <i>x</i> &lt; getBase(). A
 	 *         variable-length radix uses the digit -1 signifies that the
 	 *         position is beyond the end of the object's representation.

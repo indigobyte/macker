@@ -53,16 +53,16 @@ import de.andrena.tools.macker.util.EnumeratedType;
  * A map which theoretically has fast lookups, but doesn't actually work very
  * well (yet).
  * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> All the radix utilities in innig-util are completely
  * experimental. (In particular, this class is not completely implemented!) They
  * may stay; they may improve; they may go away.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> Experiment.</td>
  * </tr>
  * </table>

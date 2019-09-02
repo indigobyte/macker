@@ -1,7 +1,7 @@
 /*______________________________________________________________________________
- * 
+ *
  * Copyright 2000-2001 Paul Cantrell
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -12,7 +12,7 @@
  * (2) Redistributions in binary form must reproduce the above copyright
  *     notice, this list of conditions and the following disclaimer in
  *     the documentation and/or other materials provided with the
- *     distribution. 
+ *     distribution.
  *
  * (3) The name of the author may not be used to endorse or promote
  *     products derived from this software without specific prior
@@ -34,98 +34,96 @@
 
 package de.andrena.tools.macker.util.collect;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Graph utilities.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is obviously a very immature API. The implementation of
  * the single method in it, however, works quite well.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> In the future, innig-util will include more complete graph
  * handling utilities.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author Paul Cantrell
  * @version [Development version]
  */
 
 public abstract class Graphs {
-	/**
-	 * Returns the set of all nodes reachable along directed paths from a given
-	 * node in a given graph. The implementation is smart about cycle detection.
-	 */
+    private Graphs() {
+    } // To prevent instantiation
 
-	public static <N> Set<N> reachableNodes(N initial, GraphWalker<N> walker) {
-		return reachableNodesFromSet(Collections.singleton(initial), walker);
-	}
+    /**
+     * Returns the set of all nodes reachable along directed paths from a given
+     * node in a given graph. The implementation is smart about cycle detection.
+     */
 
-	/**
-	 * Returns the set of all nodes reachable along directed paths from a given
-	 * set of nodes in a given graph. The implementation is smart about cycle
-	 * detection.
-	 */
+    public static <N> Set<N> reachableNodes(N initial, GraphWalker<N> walker) {
+        return reachableNodesFromSet(Collections.singleton(initial), walker);
+    }
 
-	public static <N> Set<N> reachableNodesFromSet(Set<N> initial, GraphWalker<N> walker) {
-		Set<N> nodes = new HashSet<N>(), newNodes = initial, newerNodes = new HashSet<N>();
+    /**
+     * Returns the set of all nodes reachable along directed paths from a given
+     * set of nodes in a given graph. The implementation is smart about cycle
+     * detection.
+     */
 
-		while (!newNodes.isEmpty()) {
-			nodes.addAll(newNodes); // Put the new nodes in the current list.
+    public static <N> Set<N> reachableNodesFromSet(Set<N> initial, GraphWalker<N> walker) {
+        Set<N> nodes = new HashSet<N>(), newNodes = initial, newerNodes = new HashSet<N>();
 
-			// Now put all the newly reachable nodes a list of even newer nodes.
+        while (!newNodes.isEmpty()) {
+            nodes.addAll(newNodes); // Put the new nodes in the current list.
 
-			for (N newNode : newNodes)
+            // Now put all the newly reachable nodes a list of even newer nodes.
+
+			for (N newNode : newNodes) {
 				newerNodes.addAll(walker.getEdgesFrom(newNode));
+			}
 
-			// Add unwalked newer nodes for next time
+            // Add unwalked newer nodes for next time
 
-			newerNodes.removeAll(nodes);
-			newNodes = newerNodes;
-			newerNodes = new HashSet<N>();
-		}
+            newerNodes.removeAll(nodes);
+            newNodes = newerNodes;
+            newerNodes = new HashSet<N>();
+        }
 
-		return nodes;
-	}
+        return nodes;
+    }
 
-	public static <N> Set<List<N>> findCycles(N initial, GraphWalker<N> walker) {
-		Set<List<N>> cycles = new HashSet<List<N>>(); // ! change to
-														// IdentityHashSet
-		findCycles(initial, cycles, walker, new ArrayList<N>(), new HashSet<N>()); // !
-																					// change
-																					// to
-																					// IdentityHashSet
-		return cycles;
-	}
+    public static <N> Set<List<N>> findCycles(N initial, GraphWalker<N> walker) {
+        Set<List<N>> cycles = new HashSet<List<N>>(); // ! change to
+        // IdentityHashSet
+        findCycles(initial, cycles, walker, new ArrayList<N>(), new HashSet<N>()); // !
+        // change
+        // to
+        // IdentityHashSet
+        return cycles;
+    }
 
-	private static <N> void findCycles(N node, Set<List<N>> cycles, GraphWalker<N> walker, List<N> curPath,
-			Set<N> visited) {
-		curPath.add(node);
+    private static <N> void findCycles(N node, Set<List<N>> cycles, GraphWalker<N> walker, List<N> curPath,
+                                       Set<N> visited) {
+        curPath.add(node);
 
-		if (visited.contains(node))
+		if (visited.contains(node)) {
 			cycles.add(Collections.unmodifiableList(new ArrayList<N>(curPath))); // !
-																					// wastes
-																					// 10%
+		}
+		// wastes
+		// 10%
 		else {
 			visited.add(node);
-			for (N neighbor : walker.getEdgesFrom(node))
+			for (N neighbor : walker.getEdgesFrom(node)) {
 				findCycles(neighbor, cycles, walker, curPath, visited);
+			}
 			visited.remove(node);
 		}
 
-		curPath.remove(curPath.size() - 1);
-	}
-
-	private Graphs() {
-	} // To prevent instantiation
+        curPath.remove(curPath.size() - 1);
+    }
 }

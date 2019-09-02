@@ -131,17 +131,17 @@ import java.net.Socket;
  * You could easily modify this class to filter traffic, do TCP broadcasts, and
  * other such insanity -- the source license allows modification, so go to it!
  * And, if you're a good soul, share your cool mods with the world.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ *
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is mature code. It has worked very well in several
  * different real-world settings. I have seen a connection-dangling problem when
  * this class is used as an HTTP proxy; I'd like to track this down.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> Though there are possibilities for interesting derived
  * utilities (mentioned above), there are no current plans to expand or revise
  * this class's functionality -- except to track down the connection dangling

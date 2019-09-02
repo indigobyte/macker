@@ -3,15 +3,15 @@
  * Macker   http://innig.net/macker/
  *
  * Copyright 2002-2003 Paul Cantrell
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
  * Free Software Foundation. See the file LICENSE.html for more information.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY, including the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the license for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * this program; if not, write to the Free Software Foundation, Inc. / 59 Temple
  * Place, Suite 330 / Boston, MA 02111-1307 / USA.
@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -37,6 +38,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaderJDOMFactory;
+import org.jdom2.input.sax.XMLReaderXSDFactory;
 import org.jdom2.input.sax.XMLReaders;
 
 import de.andrena.tools.macker.rule.filter.Filter;
@@ -47,7 +50,14 @@ public class RuleSetBuilder {
 	private final SAXBuilder saxBuilder;
 
 	public RuleSetBuilder() {
-		saxBuilder = new SAXBuilder(XMLReaders.XSDVALIDATING);
+		URL xsd = getClass().getResource("/de/andrena/tools/macker/macker.xsd");
+		XMLReaderJDOMFactory factory;
+		try {
+			factory = new XMLReaderXSDFactory(xsd);
+		} catch (JDOMException e) {
+			throw new RuntimeException(e);
+		}
+		saxBuilder = new SAXBuilder(factory);
 	}
 
 	public Collection<RuleSet> build(final InputStream is)

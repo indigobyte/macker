@@ -44,16 +44,15 @@ import java.util.Map;
 
 /**
  * A multi-map implementation which uses {@link HashMap} and {@link HashSet}.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
- * <tr>
- * <td bgcolor="#EEEEEE">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
+* <tr>
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is a 90% mature API, and a stable implementation. It
  * performs well in formal testing, but has not undergone real-world testing.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> There are no current plans to expand or revise this class's
  * functionality.</td>
  * </tr>

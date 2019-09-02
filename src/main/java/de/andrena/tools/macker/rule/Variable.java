@@ -24,7 +24,7 @@ import de.andrena.tools.macker.event.MackerIsMadException;
 import de.andrena.tools.macker.structure.ClassManager;
 
 /**
- * Processes <var> tags in rule XML files.
+ * Processes &lt;var&gt; tags in rule XML files.
  */
 public class Variable extends Rule {
 	public Variable(RuleSet parent, String name, String value) {

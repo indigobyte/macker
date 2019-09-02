@@ -2,9 +2,20 @@
 
 [Documentation and examples](http://innig.net/macker/guide/)
 
-This is a [fork from innig.net](http://innig.net/macker/) ([source](http://sourceforge.net/p/macker/code/177/tree/trunk/macker/)), who initiated and developed this project.
+To create new version of maven artifact do this:
 
-The intent of this fork is solely to ensure availability in Maven Central and updating it as necessary to provide support for today's JVMs. The original Macker (Version 0.4.2) was using [BCEL 5.2](http://commons.apache.org/bcel/) to do the bytecode parsing necessary to detect package dependencies. Unfortunately, it is no longer compatible to the Java Class File Format of Java 1.7 and 1.8. This fork eliminates the dependency to BCEL and replaces it with [Javassist](http://www.csg.is.titech.ac.jp/~chiba/javassist/), which seems to work with the newer class file versions.
+Checkout `mvn-repo` branch into some folder
+Run command:
+``````
+mvn clean package deploy:deploy-file \
+    -DgroupId=de.andrena.tools.macker \
+    -DartifactId=macker \
+    -Dversion=1.0.6-CUSTOM \
+    -Dfile=target/macker-1.0.6-CUSTOM.jar \
+    -Dsources=target/macker-1.0.6-CUSTOM-sources.jar \
+    -Djavadoc=target/macker-1.0.6-CUSTOM-javadoc.jar \
+    -Durl=file://path-to-mvn-repo-folder
+``````
 
-See also:
-* The corresponding [Maven Plugin](https://github.com/andrena/macker-maven-plugin).
+Change version numbers according to the new version.
+Specify path to the folder with `mvn-repo` branch. It must be full path in URL format starting with `file://` protocol.

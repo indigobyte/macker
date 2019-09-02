@@ -93,19 +93,19 @@ import java.util.List;
  * For much smoother output than <code>tail -f</code>, try:
  * <code>java org.mpr.util.StreamSplitter -f -l 2 file out</code>
  * <p>
- * <li>See {@link org.mpr.util.TCPTunnel TCPTunnel} for an interesting network
+ * <li>See org.mpr.util.TCPTunnel for an interesting network
  * example.
  * </ul>
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ *
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is mature code. It has worked nicely in real-world
  * settings.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> There are no current plans to expand or revise this class's
  * functionality. High-volume performance testing and tuning might be useful in
  * the future.</td>

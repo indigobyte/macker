@@ -50,8 +50,8 @@ import java.util.Set;
  * The behavior of a multi-map is undefined if its keys are mutable.
  * <p>
  * As with the standard Java collections classes, instances of MultiMap are
- * unsynchronized. See <tt>net.innig.collect.InnigCollections</tt> for
- * <tt>synchronizedMultiMap()</tt> and <tt>unmodifiableMultiMap()</tt> methods.
+ * unsynchronized. See <code>net.innig.collect.InnigCollections</code> for
+ * <code>synchronizedMultiMap()</code> and <code>unmodifiableMultiMap()</code> methods.
  * <p>
  * The <a href="http://jakarta.apache.org/commons/collections.html">Jakarta
  * Commons Collections</a> package also provides a <a href=
@@ -62,22 +62,21 @@ import java.util.Set;
  * particularly tailored to the behavior of a MultiMap. However, the Jakarta
  * Collections are more widely accepted, and are a generally excellent package,
  * so I certainly recommend checking them out!
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is a 90% mature API.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> There are no current plans to expand or revise this interface.</td>
  * </tr>
  * </table>
  * 
  * @author Paul Cantrell
  * @version [Development version]
- * @see net.innig.collect.InnigCollections
+ * @see InnigCollections
  */
 public interface MultiMap<K, V> {
 	/**

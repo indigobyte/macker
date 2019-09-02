@@ -26,7 +26,7 @@ import de.andrena.tools.macker.event.MessageEvent;
 import de.andrena.tools.macker.structure.ClassManager;
 
 /**
- * Processes <message> tags in rule XML files.
+ * Processes &lt;message&gt; tags in rule XML files.
  */
 public class Message extends Rule {
 	// --------------------------------------------------------------------------

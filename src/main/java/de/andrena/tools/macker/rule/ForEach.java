@@ -34,7 +34,7 @@ import de.andrena.tools.macker.structure.ClassInfo;
 import de.andrena.tools.macker.structure.ClassManager;
 
 /**
- * Processes <foreach> tags in rule XML files.
+ * Processes &lt;foreach&gt; tags in rule XML files.
  */
 public class ForEach extends Rule {
 	public ForEach(RuleSet parent) {

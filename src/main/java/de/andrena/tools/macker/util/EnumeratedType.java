@@ -96,16 +96,16 @@ import java.util.TreeMap;
  * identity on the receiving side -- you can use <code>==</code> on enumerated
  * type objects sent over the wire.
  * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> The serialization/resolve/allTypes support is relatively
  * new. It's succeeded in unit tests, but not real-world tests. The basic
  * enumerated type pattern is thoroughly established and well-worn.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> Perhaps add JDO support.</td>
  * </tr>
  * </table>

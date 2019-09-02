@@ -42,15 +42,15 @@ import java.util.Collection;
 
 /**
  * A foolishly simple abstraction of a directed graph.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
+ *
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> Though small, this is a mature API.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> In the future, innig-util will include more complete graph
  * handling utilities. This interface might optionally support bi-directional
  * traversal. See {@link Graphs}.</td>

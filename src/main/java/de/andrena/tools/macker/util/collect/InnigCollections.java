@@ -54,16 +54,15 @@ import java.util.TreeSet;
 
 /**
  * Innig collection utilities.
- * 
- * <p align="center">
- * <table cellpadding=4 cellspacing=2 border=0 bgcolor="#338833" width="90%">
- * <tr>
- * <td bgcolor="#EEEEEE">
+ * <table style="cellpadding: 4px; cellspacing: 2px; border-style: none; background-color: #338833; width: 90%;">
+ * <caption>Additional info</caption>
+* <tr>
+ * <td style="background-color: #EEEEEE;">
  * <b>Maturity:</b> This is not a mature API, and the implementation is
  * completely experimental. The radix sort works, but is quite slow.</td>
  * </tr>
  * <tr>
- * <td bgcolor="#EEEEEE">
+ * <td style="background-color: #EEEEEE;">
  * <b>Plans:</b> This class will eventually contain synchronized and immutable
  * support for {@link MultiMap}. The radix sort will either improve or
  * disappear.</td>
